@@ -7,28 +7,59 @@
 //
 
 #import "ONCaptureController.h"
+#import <LFLiveKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <VideoToolbox/VideoToolbox.h>
 
-@interface ONCaptureController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate>
-
-
+@interface ONCaptureController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,LFLiveSessionDelegate>
 
 @end
 
 @implementation ONCaptureController
 {
     /// 会话
-    AVCaptureSession *_session;
+//    AVCaptureSession *_session;
     /// 链接
-    AVCaptureConnection *_videoConnection;
-    AVCaptureVideoPreviewLayer *_prelayer;
+//    AVCaptureConnection *_videoConnection;
+//    AVCaptureVideoPreviewLayer *_prelayer;
+    LFLiveSession *_session;
+}
+- (LFLiveSession*)session {
+    if (!_session) {
+        _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:[LFLiveVideoConfiguration defaultConfiguration]];
+        _session.preView = self.view;
+        _session.delegate = self;
+    }
+    return _session;
+}
+- (void)startLive {
+    LFLiveStreamInfo *streamInfo = [LFLiveStreamInfo new];
+    streamInfo.url = @"rtmp://127.0.0.1:1935/rtmplive/room";
+    [self.session startLive:streamInfo];
+}
+
+- (void)stopLive {
+    [self.session stopLive];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self startLive];
+}
+- (void)liveSession:(nullable LFLiveSession *)session liveStateDidChange:(LFLiveState)state{
+    NSLog(@"state == %lu",(unsigned long)state);
+}
+/** live debug info callback */
+- (void)liveSession:(nullable LFLiveSession *)session debugInfo:(nullable LFLiveDebug *)debugInfo{
+    NSLog(@"debugInfo == %@",debugInfo);
+}
+/** callback socket errorcode */
+- (void)liveSession:(nullable LFLiveSession *)session errorCode:(LFLiveSocketErrorCode)errorCode{
+    NSLog(@"errorCode == %lu",(unsigned long)errorCode);
+}
+/**
+- (void)videoAVCapture{
     /// 音频设备
-   
     AVCaptureDevice *audioDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
     /// 视频设备
     AVCaptureDevice *videoDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -41,10 +72,10 @@
     if ([_session canAddInput:videoInput]) {
         [_session addInput:videoInput];
     }
-//    [NSURL fileURLWithPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"MBA材料撰写.m4a"]];
-//
+    //    [NSURL fileURLWithPath:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByDeletingLastPathComponent] stringByAppendingPathComponent:@"MBA材料撰写.m4a"]];
+    //
     AVCaptureVideoDataOutput *videoOutput = [[AVCaptureVideoDataOutput alloc]init];
-   dispatch_queue_t videoQueue = dispatch_queue_create("video", DISPATCH_QUEUE_SERIAL);
+    dispatch_queue_t videoQueue = dispatch_queue_create("video", DISPATCH_QUEUE_SERIAL);
     [videoOutput setSampleBufferDelegate:self queue:videoQueue];
     
     AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc]init];
@@ -61,13 +92,12 @@
     _prelayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:_session];
     CALayer *layer = self.view.layer;
     _prelayer.frame = self.view.frame;
-   // 填充模式
-   _prelayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    // 填充模式
+    _prelayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     // 将视频预览层添加到界面中
     [layer addSublayer:_prelayer];
     [_session startRunning];
 }
-
 - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
     if (connection == _videoConnection) {
         NSLog(@"video data == %@",sampleBuffer);
@@ -91,6 +121,5 @@
         NSLog(@"audio data == %@",sampleBuffer);
     }
 }
-
-
+*/
 @end
