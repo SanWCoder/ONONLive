@@ -14,6 +14,7 @@
 		2DA250722086EBDC003A26B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA250712086EBDC003A26B7 /* main.m */; };
 		2DA2507C2086EBDC003A26B7 /* ONONLiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA2507B2086EBDC003A26B7 /* ONONLiveTests.m */; };
 		2DA250872086EBDD003A26B7 /* ONONLiveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA250862086EBDD003A26B7 /* ONONLiveUITests.m */; };
+		F23374D45C1D12456D90BC4E /* libPods-ONONLive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 45CA76E9608FE8DDE5D4230F /* libPods-ONONLive.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,9 @@
 		2DA250822086EBDC003A26B7 /* ONONLiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ONONLiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA250862086EBDD003A26B7 /* ONONLiveUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ONONLiveUITests.m; sourceTree = "<group>"; };
 		2DA250882086EBDD003A26B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45CA76E9608FE8DDE5D4230F /* libPods-ONONLive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ONONLive.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A1F1B626153269B2AF71D8C /* Pods-ONONLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ONONLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-ONONLive/Pods-ONONLive.release.xcconfig"; sourceTree = "<group>"; };
+		EB124436763E29054EB42CEE /* Pods-ONONLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ONONLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ONONLive/Pods-ONONLive.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23374D45C1D12456D90BC4E /* libPods-ONONLive.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		23B2D1B19CC8B0E89D856B5E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EB124436763E29054EB42CEE /* Pods-ONONLive.debug.xcconfig */,
+				6A1F1B626153269B2AF71D8C /* Pods-ONONLive.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2D5B538D208D8B00001F1A25 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +126,8 @@
 				2DA2507A2086EBDC003A26B7 /* ONONLiveTests */,
 				2DA250852086EBDD003A26B7 /* ONONLiveUITests */,
 				2DA250602086EBDC003A26B7 /* Products */,
+				23B2D1B19CC8B0E89D856B5E /* Pods */,
+				DFDBBAB2EC552DE17DC8ED2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,9 +144,9 @@
 		2DA250612086EBDC003A26B7 /* ONONLive */ = {
 			isa = PBXGroup;
 			children = (
+				2D5B538D208D8B00001F1A25 /* Classes */,
 				2D5B5391208D8BA2001F1A25 /* AppDelegate */,
 				2D5B5390208D8B70001F1A25 /* Source Files */,
-				2D5B538D208D8B00001F1A25 /* Classes */,
 			);
 			path = ONONLive;
 			sourceTree = "<group>";
@@ -153,6 +169,14 @@
 			path = ONONLiveUITests;
 			sourceTree = "<group>";
 		};
+		DFDBBAB2EC552DE17DC8ED2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45CA76E9608FE8DDE5D4230F /* libPods-ONONLive.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,9 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2DA2508B2086EBDD003A26B7 /* Build configuration list for PBXNativeTarget "ONONLive" */;
 			buildPhases = (
+				ACDCC1F7515EC24C1A6D2D87 /* [CP] Check Pods Manifest.lock */,
 				2DA2505B2086EBDC003A26B7 /* Sources */,
 				2DA2505C2086EBDC003A26B7 /* Frameworks */,
 				2DA2505D2086EBDC003A26B7 /* Resources */,
+				B1D53FD539377A6018101D21 /* [CP] Embed Pods Frameworks */,
+				3D883663545EE5E44F043412 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -280,6 +307,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D883663545EE5E44F043412 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ONONLive/Pods-ONONLive-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACDCC1F7515EC24C1A6D2D87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ONONLive-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1D53FD539377A6018101D21 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ONONLive/Pods-ONONLive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2DA2505B2086EBDC003A26B7 /* Sources */ = {
@@ -441,6 +519,7 @@
 		};
 		2DA2508C2086EBDD003A26B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB124436763E29054EB42CEE /* Pods-ONONLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -456,6 +535,7 @@
 		};
 		2DA2508D2086EBDD003A26B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A1F1B626153269B2AF71D8C /* Pods-ONONLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
