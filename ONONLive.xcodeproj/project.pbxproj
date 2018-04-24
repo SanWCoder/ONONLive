@@ -10,6 +10,7 @@
 		2D5B5399208D8DAE001F1A25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B5398208D8D99001F1A25 /* AppDelegate.m */; };
 		2D5B53C9208F320C001F1A25 /* ONCaptureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B53C4208F31EC001F1A25 /* ONCaptureController.m */; };
 		2D5B53CA208F3210001F1A25 /* ONPlayLiveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5B53BD208F31EB001F1A25 /* ONPlayLiveController.m */; };
+		2D5B53CE208F353D001F1A25 /* IJKMediaFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5B53CD208F352A001F1A25 /* IJKMediaFramework.framework */; };
 		2DA2506C2086EBDC003A26B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DA2506B2086EBDC003A26B7 /* Assets.xcassets */; };
 		2DA2506F2086EBDC003A26B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DA2506D2086EBDC003A26B7 /* LaunchScreen.storyboard */; };
 		2DA250722086EBDC003A26B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA250712086EBDC003A26B7 /* main.m */; };
@@ -42,6 +43,7 @@
 		2D5B53BD208F31EB001F1A25 /* ONPlayLiveController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ONPlayLiveController.m; sourceTree = "<group>"; };
 		2D5B53C3208F31EC001F1A25 /* ONCaptureController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ONCaptureController.h; sourceTree = "<group>"; };
 		2D5B53C4208F31EC001F1A25 /* ONCaptureController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ONCaptureController.m; sourceTree = "<group>"; };
+		2D5B53CD208F352A001F1A25 /* IJKMediaFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IJKMediaFramework.framework; sourceTree = "<group>"; };
 		2DA2505F2086EBDC003A26B7 /* ONONLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ONONLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DA2506B2086EBDC003A26B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DA2506E2086EBDC003A26B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D5B53CE208F353D001F1A25 /* IJKMediaFramework.framework in Frameworks */,
 				F23374D45C1D12456D90BC4E /* libPods-ONONLive.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +210,7 @@
 		2D5B53C8208F31F3001F1A25 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				2D5B53CD208F352A001F1A25 /* IJKMediaFramework.framework */,
 			);
 			path = Framework;
 			sourceTree = "<group>";
