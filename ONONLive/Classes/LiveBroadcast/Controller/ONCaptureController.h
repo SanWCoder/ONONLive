@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ * 录制推流控制器
+ */
 @interface ONCaptureController : UIViewController
 
 @end

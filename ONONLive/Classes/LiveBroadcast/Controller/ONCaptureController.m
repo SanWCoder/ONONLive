@@ -12,29 +12,33 @@
 #import <VideoToolbox/VideoToolbox.h>
 
 @interface ONCaptureController ()<AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureAudioDataOutputSampleBufferDelegate,LFLiveSessionDelegate>
-
 @end
 
 @implementation ONCaptureController
 {
-    /// 会话
-//    AVCaptureSession *_session;
-    /// 链接
-//    AVCaptureConnection *_videoConnection;
-//    AVCaptureVideoPreviewLayer *_prelayer;
+    // 会话
+// AVCaptureSession *_session;
+// 链接
+// AVCaptureConnection *_videoConnection;
+// AVCaptureVideoPreviewLayer *_prelayer;
     LFLiveSession *_session;
 }
+
 - (LFLiveSession*)session {
     if (!_session) {
-        _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:[LFLiveVideoConfiguration defaultConfiguration]];
+        /// 设置
+        _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:[LFLiveVideoConfiguration defaultConfiguration] captureType:LFLiveCaptureMaskAll];
         _session.preView = self.view;
         _session.delegate = self;
+        _session.showDebugInfo = YES;
+        /// 必须打开运行不然无法录制
+        _session.running = YES;
     }
     return _session;
 }
 - (void)startLive {
     LFLiveStreamInfo *streamInfo = [LFLiveStreamInfo new];
-    streamInfo.url = @"rtmp://127.0.0.1:1935/rtmplive/room";
+    streamInfo.url = @"rtmp://172.16.188.104:1935/rtmplive/room";
     [self.session startLive:streamInfo];
 }
 
@@ -45,6 +49,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self startLive];
+//    [self videoAVCapture];
 }
 - (void)liveSession:(nullable LFLiveSession *)session liveStateDidChange:(LFLiveState)state{
     NSLog(@"state == %lu",(unsigned long)state);
@@ -77,7 +82,6 @@
     AVCaptureVideoDataOutput *videoOutput = [[AVCaptureVideoDataOutput alloc]init];
     dispatch_queue_t videoQueue = dispatch_queue_create("video", DISPATCH_QUEUE_SERIAL);
     [videoOutput setSampleBufferDelegate:self queue:videoQueue];
-    
     AVCaptureAudioDataOutput *audioOutput = [[AVCaptureAudioDataOutput alloc]init];
     dispatch_queue_t audioQueue = dispatch_queue_create("audio", DISPATCH_QUEUE_SERIAL);
     [audioOutput setSampleBufferDelegate:self queue:audioQueue];
