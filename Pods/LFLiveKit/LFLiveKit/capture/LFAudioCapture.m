@@ -89,7 +89,6 @@ NSString *const LFAudioComponentFailedToCreateNotification = @"LFAudioComponentF
         [session setPreferredSampleRate:_configuration.audioSampleRate error:nil];
         [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker | AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers error:nil];
         [session setActive:YES withOptions:kAudioSessionSetActiveFlag_NotifyOthersOnDeactivation error:nil];
-        
         [session setActive:YES error:nil];
     }
     return self;

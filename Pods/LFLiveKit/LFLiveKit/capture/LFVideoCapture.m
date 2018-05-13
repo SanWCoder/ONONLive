@@ -292,6 +292,7 @@
         self.filter = [[LFGPUImageBeautyFilter alloc] init];
         self.beautyFilter = (LFGPUImageBeautyFilter*)self.filter;
     } else {
+        UIPageViewController
         self.output = [[LFGPUImageEmptyFilter alloc] init];
         self.filter = [[LFGPUImageEmptyFilter alloc] init];
         self.beautyFilter = nil;
